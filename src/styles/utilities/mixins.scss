@@ -1,0 +1,68 @@
+@import '../bulma/bulma-override-variables';
+
+@mixin absolute-y-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin absolute-x-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin absolute-xy-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin custom-scroll {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: $custom-scroll-width;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray-194;
+    border-radius: $custom-scroll-width;
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: $custom-scroll-width;
+  }
+}
+
+@mixin custom-scroll {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: $custom-scroll-thin-width;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray-208;
+    border-radius: $custom-scroll-thin-width / 2;
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: $custom-scroll-thin-width;
+  }
+}
