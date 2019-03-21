@@ -8,6 +8,7 @@
         <ul class="menu-list">
           <li>
             <router-link :to="{name: RouteNames.example1}">Example 1</router-link>
+            <router-link :to="{name: RouteNames.example2}">Example 2</router-link>
           </li>
         </ul>
       </aside>
