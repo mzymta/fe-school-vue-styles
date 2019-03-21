@@ -6,12 +6,19 @@
         @click="isVisible = !isVisible"
         class="button is-primary">visible: {{ isVisible }}</button>
     </div>
-    <transition name="height">
-      <p
+    <transition
+      name="height"
+      @enter="collapseHeightEnter"
+      @after-enter="collapseHeightAfter"
+      @leave="collapseHeightLeave"
+      @after-leave="collapseHeightAfter">
+      <div
         v-if="isVisible"
         class="text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolores inventore molestiae quibusdam. Ab aliquam corporis ea eveniet illo iste libero minus natus nihil, nulla quis similique voluptate voluptates? Animi at aut beatae consectetur corporis deleniti doloremque dolores error excepturi expedita facilis fuga id illum in incidunt, inventore iure laborum libero modi necessitatibus odio odit, omnis, perspiciatis quaerat rem repudiandae totam ullam? Cumque exercitationem illo itaque laborum laudantium perferendis possimus quod, similique. Est expedita fuga incidunt, laboriosam laborum maxime natus nostrum nulla, officia, quibusdam quidem quod reprehenderit sed sit temporibus. A aliquam amet enim nihil quos sunt veniam. Consectetur dignissimos esse est hic non? Aperiam enim et optio. Aliquid amet culpa deleniti dicta dolore dolorem eos eum id illo, incidunt ipsam iure iusto labore laudantium magnam nam necessitatibus nisi nulla optio perferendis praesentium quam, quibusdam reiciendis repellendus saepe sit temporibus voluptas? Ab cumque laborum optio perferendis, quaerat quos reprehenderit voluptatum.
-      </p>
+        <p class="text-inner">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolores inventore molestiae quibusdam. Ab aliquam corporis ea eveniet illo iste libero minus natus nihil, nulla quis similique voluptate voluptates? Animi at aut beatae consectetur corporis deleniti doloremque dolores error excepturi expedita facilis fuga id illum in incidunt, inventore iure laborum libero modi necessitatibus odio odit, omnis, perspiciatis quaerat rem repudiandae totam ullam? Cumque exercitationem illo itaque laborum laudantium perferendis possimus quod, similique. Est expedita fuga incidunt, laboriosam laborum maxime natus nostrum nulla, officia, quibusdam quidem quod reprehenderit sed sit temporibus. A aliquam amet enim nihil quos sunt veniam. Consectetur dignissimos esse est hic non? Aperiam enim et optio. Aliquid amet culpa deleniti dicta dolore dolorem eos eum id illo, incidunt ipsam iure iusto labore laudantium magnam nam necessitatibus nisi nulla optio perferendis praesentium quam, quibusdam reiciendis repellendus saepe sit temporibus voluptas? Ab cumque laborum optio perferendis, quaerat quos reprehenderit voluptatum.
+        </p>
+      </div>
     </transition>
   </section>
 </template>
@@ -23,8 +30,35 @@
   export default Vue.extend({
     data() {
       return {
-        isVisible: true
+        isVisible: true,
+        transitionDuration: 500
       };
+    },
+    methods: {
+      collapseHeightEnter(el: HTMLElement, done: () => void) {
+        el.style.transition = `height ${this.transitionDuration}ms`;
+        el.style.overflow = 'hidden';
+        const height = el.offsetHeight;
+        el.style.height = '0px';
+        setTimeout(() => {
+          el.style.height = `${height}px`;
+          setTimeout(() => done(), this.transitionDuration);
+        });
+      },
+      collapseHeightLeave(el: HTMLElement, done: () => void) {
+        el.style.transition = `${this.transitionDuration}ms`;
+        el.style.overflow = 'hidden';
+        el.style.height = `${el.offsetHeight}px`;
+        setTimeout(() => {
+          el.style.height = '0px';
+          setTimeout(() => done(), this.transitionDuration);
+        });
+      },
+      collapseHeightAfter(el: HTMLElement) {
+        el.style.height = '';
+        el.style.transition = '';
+        el.style.overflow = '';
+      }
     }
   });
 </script>
@@ -34,20 +68,10 @@
   @import '../styles/utilities/variables';
 
   .text {
-    padding: $building-unit-x2;
+    &-inner {
+      padding: $building-unit-x2;
+    }
     border: 1px solid $blue;
     overflow: hidden;
-  }
-
-  .height-enter,
-  .height-leave-to {
-    height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .height-enter-active,
-  .height-leave-active {
-    transition: 1s;
   }
 </style>
