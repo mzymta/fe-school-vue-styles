@@ -6,7 +6,9 @@
         @click="isEdit = !isEdit"
         class="button is-primary">edit mode: {{ isEdit }}</button>
     </div>
-    <transition name="opacity">
+    <transition
+      mode="out-in"
+      name="opacity">
       <input
         v-if="isEdit"
         class="input"/>
