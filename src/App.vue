@@ -10,6 +10,7 @@
             <router-link :to="{name: RouteNames.example1}">Example 1</router-link>
             <router-link :to="{name: RouteNames.example2}">Example 2</router-link>
             <router-link :to="{name: RouteNames.example3}">Example 3</router-link>
+            <router-link :to="{name: RouteNames.example4}">Example 4</router-link>
           </li>
         </ul>
       </aside>
