@@ -11,6 +11,7 @@
             <router-link :to="{name: RouteNames.example2}">Example 2</router-link>
             <router-link :to="{name: RouteNames.example3}">Example 3</router-link>
             <router-link :to="{name: RouteNames.example4}">Example 4</router-link>
+            <router-link :to="{name: RouteNames.example5}">Example 5</router-link>
           </li>
         </ul>
       </aside>
