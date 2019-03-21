@@ -51,14 +51,4 @@
     padding-top: percentage(9/16);
     background: $gray-237 center / cover no-repeat;
   }
-
-  .opacity-enter,
-  .opacity-leave-to {
-    opacity: 0;
-  }
-
-  .opacity-enter-active,
-  .opacity-leave-active {
-    transition: opacity 1s;
-  }
 </style>
