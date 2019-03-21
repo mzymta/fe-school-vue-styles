@@ -5,6 +5,7 @@ import Example2 from './views/Example2.vue';
 import Example3 from './views/Example3.vue';
 import Example4 from './views/Example4.vue';
 import Example5 from './views/Example5.vue';
+import Example6 from './views/Example6.vue';
 
 Vue.use(Router);
 
@@ -13,7 +14,8 @@ export enum RouteNames {
   example2 = 'example2',
   example3 = 'example3',
   example4 = 'example4',
-  example5 = 'example5'
+  example5 = 'example5',
+  example6 = 'example6'
 }
 
 export default new Router({
@@ -45,6 +47,11 @@ export default new Router({
       path: '/5',
       name: RouteNames.example5,
       component: Example5
+    },
+    {
+      path: '/6',
+      name: RouteNames.example6,
+      component: Example6
     }
   ]
 });
