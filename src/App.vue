@@ -20,7 +20,11 @@
         </ul>
       </aside>
       <main class="app-main">
-        <router-view/>
+        <transition
+          mode="out-in"
+          name="opacity">
+          <router-view/>
+        </transition>
       </main>
     </div>
   </div>
