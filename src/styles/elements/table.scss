@@ -1,0 +1,86 @@
+$table-border-color: $gray-237;
+$table-head-border-width: 1px;
+$table-border-width: 1px;
+$table-row-border-radius: 3px;
+$table-border-spacing-y: 4px;
+$table-border-spacing-x: 0;
+$table-border-spacing: $table-border-spacing-x $table-border-spacing-y;
+$cell-horizontal-padding: $building-unit * 1.5;
+$cell-vertical-padding: $building-unit * 1.5;
+$head-cell-vertical-padding: $cell-vertical-padding - $table-border-spacing-y;
+$header-cell-font-size: 13px;
+
+.table-container {
+  width: 100%;
+  overflow: visible;
+  padding-bottom: $building-unit;
+}
+
+.table {
+  display: table;
+  border-spacing: $table-border-spacing;
+  width: 100%;
+
+  &-head {
+    display: table-header-group;
+  }
+
+  &-body {
+    display: table-row-group;
+  }
+
+  &-row {
+    display: table-row;
+  }
+
+  &-cell {
+    display: table-cell;
+    border-bottom: $table-border-width solid $table-border-color;
+    border-top: $table-border-width solid $table-border-color;
+    padding: $cell-vertical-padding $cell-horizontal-padding;
+    text-align: left;
+    vertical-align: middle;
+    background-color: $white;
+
+    &:first-child {
+      border-left: $table-border-width solid $table-border-color;
+      border-top-left-radius: $table-row-border-radius;
+      border-bottom-left-radius: $table-row-border-radius;
+    }
+
+    &:last-child {
+      border-right: $table-border-width solid $table-border-color;
+      border-top-right-radius: $table-row-border-radius;
+      border-bottom-right-radius: $table-row-border-radius;
+    }
+
+    &.is-head {
+      font-weight: 700;
+      border: none;
+      padding-top: 0;
+      text-transform: uppercase;
+      font-size: $header-cell-font-size;
+      color: $gray-178;
+      padding-bottom: $head-cell-vertical-padding;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: transparent;
+    }
+
+    &.is-head {
+      &.is-sortable {
+        cursor: pointer;
+        user-select: none;
+      }
+      &.is-checkbox {
+        padding-bottom: $building-unit;
+      }
+
+      &.is-title {
+        font-weight: 700;
+      }
+    }
+  }
+}

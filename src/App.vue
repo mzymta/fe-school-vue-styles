@@ -1,5 +1,57 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div class="app">
+    <div class="app-container container">
+      <aside class="app-menu menu">
+        <p class="menu-label">
+          Examples
+        </p>
+        <ul class="menu-list">
+          <li>
+            <router-link :to="{name: RouteNames.example1}">Example 1</router-link>
+          </li>
+        </ul>
+      </aside>
+      <main class="app-main">
+        <router-view/>
+      </main>
+    </div>
   </div>
 </template>
+
+<script lang="ts">
+  import Vue from 'vue';
+  import {RouteNames} from './router';
+
+  export default Vue.extend({
+      data() {
+        return {RouteNames};
+      }
+    });
+</script>
+
+<style lang="scss" scoped>
+  @import './styles/utilities/variables';
+
+  $app-menu-min-width: 300px;
+
+  .app {
+    height: 100%;
+
+    &-container {
+      display: flex;
+      height: 100%;
+    }
+
+    &-menu {
+      padding: $building-unit-x2;
+      border-right: 1px solid $gray-237;
+      flex-shrink: 0;
+      min-width: $app-menu-min-width;
+    }
+
+    &-main {
+      flex-grow: 1;
+      padding: $building-unit-x2 $building-unit-x3;
+    }
+  }
+</style>
